@@ -1,50 +1,34 @@
 <!DOCTYPE html>
 <html>
-<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="index.js"></script>
+<head>
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+</head>
 
-<div id="demo"><h2>Product</h2></div>
-
-<button type="button" onclick="fetchdata()">TableData</button>
-
-<script>
-function ajax(url, method, callback, params) {
-     var obj;
-     try {   
-      obj = new XMLHttpRequest();  
-      console.log('You are using a modern browser');
-     } catch(e){   
-       try {     
-         obj = new ActiveXObject("Msxml2.XMLHTTP");  
-         console.log('You are using an older browser');
-       } catch(e) {     
-         try { 
-           obj = new ActiveXObject("Microsoft.XMLHTTP"); 
-         } catch(e) {       
-           console.log("Your browser does not support Ajax.");       
-           return false;       
-         }     
-       }   
-     }
-     obj.onreadystatechange = function() {
-      if(obj.readyState == 4) {
-         callback(obj);
-      } 
-     }
-     obj.open(method, url, true);
-     obj.send(params);
-     return obj; 
-}
-    function fetchdata(){
-     ajax('data.json', 'get', function(obj){
-        
-        emp=obj.responseText;
-        console.log(emp);
-        
-        employee=JSON.parse(emp);
-    
-        });   
-    } 
-</script>
-
+<body onload="fetchdata();">
+    <header><h1>Savings Account</h1></header>
+    <div id="demo"></div>
+    <table id="demoTable"></table>
+    <div id="pageNavPosition"></div>
+    
+   <!-- <script type="text/javascript">
+        var pager = new Pager('results', 3); 
+        pager.init(); 
+        pager.showPageNav('pager', 'pageNavPosition'); 
+        pager.showPage(1);
+    </script>-->
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+        var pager = new Pager('results', 3); 
+        pager.init(); 
+        pager.showPageNav('demoTable', 'pageNavPosition'); 
+        pager.showPage(1);
+    </script>
+    
 </body>
+
 </html>
