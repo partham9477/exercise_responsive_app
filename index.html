@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo"><h2>Product</h2></div>
+
+<button type="button" onclick="fetchdata()">TableData</button>
+
+<script>
+function ajax(url, method, callback, params) {
+     var obj;
+     try {   
+      obj = new XMLHttpRequest();  
+      console.log('You are using a modern browser');
+     } catch(e){   
+       try {     
+         obj = new ActiveXObject("Msxml2.XMLHTTP");  
+         console.log('You are using an older browser');
+       } catch(e) {     
+         try { 
+           obj = new ActiveXObject("Microsoft.XMLHTTP"); 
+         } catch(e) {       
+           console.log("Your browser does not support Ajax.");       
+           return false;       
+         }     
+       }   
+     }
+     obj.onreadystatechange = function() {
+      if(obj.readyState == 4) {
+         callback(obj);
+      } 
+     }
+     obj.open(method, url, true);
+     obj.send(params);
+     return obj; 
+}
+    function fetchdata(){
+     ajax('data.json', 'get', function(obj){
+        
+        emp=obj.responseText;
+        console.log(emp);
+        
+        employee=JSON.parse(emp);
+    
+        });   
+    } 
+</script>
+
+</body>
+</html>

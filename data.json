@@ -1,0 +1,14 @@
+[
+  {
+    "Product": "Fixed Saver",
+    "InterestType": "2.20%",
+    "Minimum Deposit": 500,
+    "Interest Rate": "Fixed"
+  },
+  {
+    "Product": "Flex Saver",
+    "Interest Type": "1.5%",
+    "Minimum Deposit": 0,
+    "Interest Rate": "Tracker"
+  }
+]
